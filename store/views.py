@@ -1,5 +1,5 @@
-from curses.ascii import HT
-import imp
+
+
 from django.shortcuts import render
 from django.http import HttpResponseRedirect
 from .forms import SignupForm
