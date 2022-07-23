@@ -1,3 +1,4 @@
+from curses.ascii import HT
 import imp
 from django.shortcuts import render
 from django.http import HttpResponseRedirect
@@ -106,6 +107,7 @@ def register(request):
             return HttpResponseRedirect('/login/')
         else:
             messages.error(request,'Username or password or email is invalid ..Plz enter corect details')
+            return HttpResponseRedirect('/register/')
 
 
     fm=SignupForm()
