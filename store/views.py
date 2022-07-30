@@ -2,7 +2,7 @@
 
 from django.shortcuts import render
 from django.http import HttpResponseRedirect
-from .forms import SignupForm
+from .forms import SignupForm,Editpic
 
 from django.contrib.auth import authenticate,login,logout
 from django.contrib.auth.forms import AuthenticationForm
@@ -119,3 +119,25 @@ def logoutuser(request):
     logout(request)
     messages.success(request,'Successfully Logged Out..Hope you had a Wonder Experience With PixaStore')
     return HttpResponseRedirect('/login/')
+
+def deletePic(request,pk):
+    pic=Photo.objects.get(id=pk)
+    pic.delete()
+
+    return HttpResponseRedirect('/')
+
+def editpic(request,pk):
+
+    if(request.method=='POST'):
+        data=request.POST 
+        img=request.FILES.get('image') 
+
+        pic=Photo.objects.get(id=pk)
+
+        edpic=Editpic(request.POST,request.FILES,instance=pic)
+        edpic.save() 
+        return HttpResponseRedirect('/')
+
+    pic=Photo.objects.get(id=pk)
+    edpic=Editpic(instance=pic)
+    return render(request,'editpic.html',{'pic':edpic})

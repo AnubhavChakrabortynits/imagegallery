@@ -142,6 +142,11 @@
           <div><small style="font-weight:bold ;font-size:0.8rem;">Category:{{pic.category}}</small>
         </div>
         </div>
+        <div class="btn-group" role="group" aria-label="basicexample">
+          <a href="{% url 'deletepic' pic.id %}" class="btn btn-outline-danger">Delete</a>
+          <a href="{% url 'editpic' pic.id %}" class="btn btn-outline-dark">Edit</a>
+        </div>
+     
         <a href="{% url 'viewphoto' pic.id %}" class="btn btn-outline-warning">View</a>
       </div>
     </div>

@@ -26,4 +26,6 @@ urlpatterns = [
     path('',views.gallery,name="gallery"),
     path('add/',views.addphoto,name="addphoto"),
     path('view/<int:pk>/',views.viewphoto,name="viewphoto"),
+    path('deletepic/<int:pk>/',views.deletePic,name="deletepic"),
+    path('editpic/<int:pk>/',views.editpic,name="editpic")
 ]+static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)
